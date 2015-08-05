@@ -31,14 +31,14 @@ function myDelete ($id) {
 
 function myUpdate ($title, $text, $id) {
 
-    $sql = "UPDATE news SET 'title'='".$title."', 'text'='".$text."', WHERE 'id'='".$id."'";
+    $sql = "UPDATE news SET 'title'='".$title."', 'text'='".$text."' WHERE 'id'='".$id."'";
 
     return myQuery($sql);
 }
 
 function myINSERT ($title, $text) {
 
-    $sql = "INSERT INTO 'news'('title', 'text') VALUES ('".$title."', '".$text."')";
+    $sql = "INSERT INTO news (title, text) VALUES ('".$title."', '".$text."')";
 
     return myQuery($sql);
 }
