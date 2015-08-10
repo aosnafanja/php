@@ -5,7 +5,7 @@
 </head>
 
 <body>
-<p><a href="index.php">Main page</a></p>
+<p><a href="../index.php">Main page</a></p>
 <h1><? echo $news['title']; ?></h1>
 <hr />
 <p><? echo $news['text']; ?></p>
