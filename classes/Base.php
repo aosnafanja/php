@@ -2,11 +2,11 @@
 
 class Base
 {
+    public $db;
+    public $res;
     protected $host;
     protected $login;
     protected $password;
-    public $db;
-    public $res;
 
     public function __construct() {
         $this->host = 'localhost';
@@ -22,10 +22,6 @@ class Base
 
     }
 
-    public function sql_query($sql) {
-        return  mysql_query($sql);
-    }
-
     public function select($result, $class = 'stdClass') {
 
         while (false !== ($row [] = mysql_fetch_object($result, $class)));
@@ -33,15 +29,6 @@ class Base
         array_pop($row);
 
         return  $row;
-    }
-
-    public function add ($table, $values) {
-
-        $sql = "INSERT INTO ". $table ." (".implode(", ", array_keys($values)).")
-                VALUES ('".implode("', '",$values)."')";
-
-        return $this->sql_query($sql);
-
     }
 
     public function update($table, $values, $id) {
@@ -60,6 +47,11 @@ class Base
         $sql = $sql . " WHERE 'id'='". $id ."'";
 
         return $this->sql_query($sql);
+    }
+
+    public function sql_query($sql)
+    {
+        return mysql_query($sql);
     }
 
 }

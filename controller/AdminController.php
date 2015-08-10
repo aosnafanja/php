@@ -12,17 +12,19 @@ class AdminController
         include(__DIR__ . "/../view/news/addnews.php");
     }
 
-    function actionAddNews() {
+    function actionAddNews()
+    {
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
-            if (!empty($_POST['title']) && !empty($_POST['text'])) {
-                $news = new Base();
-                $news->add('news', $values = ['title' => $_POST['title'], 'text' => $_POST['text']]);
+            $addNews = new News();
+            if ($addNews->addNews()) {
                 header("Location: /index.php");
-
             } else {
-                include_once(__DIR__ . "/../view/news/addnews.php");
+                header("Location: /index.php?ctrl=Admin&act=Form");
             }
+        } else {
+            header("Location: /index.php?ctrl=Admin&act=Form");
         }
+
     }
 
 }

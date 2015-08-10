@@ -6,7 +6,8 @@
  * Date: 10.08.2015
  * Time: 10:30
  */
-class AbstractModel
+abstract class AbstractModel
+    implements IModel
 {
     protected static $table;
     protected static $class;
@@ -34,5 +35,17 @@ class AbstractModel
                 $news[$key] = $value;
             }
             return $news;
+    }
+
+    public static function add($values)
+    {
+
+        $db = new Base();
+
+        $sql = "INSERT INTO " . static::$table . " (" . implode(", ", array_keys($values)) . ")
+                VALUES ('" . implode("', '", $values) . "')";
+
+        return $db->sql_query($sql);
+
     }
 }
