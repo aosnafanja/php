@@ -6,7 +6,7 @@
 
 <body>
     <h1>Today Fresh News</h1>
-    <a href="/index.php?ctrl=Admin&act=Form"><input type="button" value="Добавить новость"></a>
+    <a href="/index.php?ctrl=Admin&act=All"><input type="button" value="Admin center"></a>
     <br /> <br />
     <? foreach ($items as $news):
      echo "<a href=\"/index.php?ctrl=News&act=One&id=". $news->id ."\" <h2>". $news->title ."</h2></a><br />";
